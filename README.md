@@ -10,28 +10,28 @@ What you'll learn:
     - 🚀 The [Astra DB Vector Store](https://db.new) for Semantic Similarity search
     - 🦜🔗 [LangChain](https://www.langchain.com) for linking Ollama running Mistral and Astra DB
 - 🤖 How to use [Ollama to run Large Language Models like Mistral](https://github.com/ollama/ollama) 
-- 👑 How to use [Streamlit](https://streamlit.io) to easily deploy your awesome app to the internet for everyone to see!
 
 - Slides of the presentation can be found [HERE](assets/meetups-slides.pdf)
 
 
 
 ## 1️⃣ Prerequisites
-This workshop assumes you have access to:
+This workshop assumes you have:
 1. [A Github account](https://github.com)
-2. [Ollama installed on your local machine](https://ollama.com/download) 
+2. [Ollama installed on your local machine](https://ollama.com/download)
 3. [Run Mistral LLM powered by Ollama on your local machine](https://ollama.com/library/mistral/tags)
    ```bash
    ollama run mistral
    ```
-4. python 3.11+ installed on your local machine. 
-   We recommend to use a virtual python environment. 
-   Create a virtual python env called 'workshop' like this:
+   ![codespace](./assets/ollama.png)
+4. Ensure Python 3.11 or higher is installed on your local machine. 
+   We advise executing all Python commands within a virtual environment for enhanced management and isolation.
+   Create a virtual Python environment named 'workshop' using the following method:
    
    ```bash 
    python -m venv workshop
    ```
-   Activate the workshop virtual environment like this: 
+   Activate the 'workshop' virtual environment as follows: 
    ```bash 
    workshop\Scripts\activate
    ```
@@ -45,7 +45,6 @@ This workshop assumes you have access to:
    ```
 During the course, you'll gain access to the following by signing up for free:
 1. [DataStax Astra DB](https://astra.datastax.com) (you can sign up through your Github account)
-2. [Streamlit](https://streamlit.io) to deploy your amazing app (you can sign up through your Github account)
 
 Follow the below steps and provide the **Astra DB API Endpoint**, **Astra DB ApplicationToken** when required.
 
@@ -56,14 +55,9 @@ Make sure you have a vector-capable Astra database (get one for free at [astra.d
 
 ![codespace](./assets/astra.png)
 
-### Sign up for Streamlit
-Follow the steps outlined [here](https://docs.streamlit.io/streamlit-community-cloud/get-started/quickstart).
-
-![codespace](./assets/streamlit.png)
-
 ## 2️⃣ Get the tutorial
 
-1. Clone this repository ```git clone https://github.com/michelderu/build-your-own-rag-chatbot.git```
+1. Clone this repository ```git clone https://github.com/difli/build-your-own-rag-chatbot.git```
 
 2. Switch branch to ollama ```git checkout ollama```
 
@@ -87,11 +81,11 @@ st.title("Your personal Efficiency Booster")
 st.markdown("""Generative AI is considered to bring the next Industrial Revolution.  
 Why? Studies show a **37% efficiency boost** in day to day work activities!""")
 ```
-The first step is to import the streamlit package. Then we call `st.title` to write a title to the web page and lastly we write some markdown content to the web page using `st.markdown`.
+Begin by importing the necessary packages, starting with the Streamlit package required for the subsequent steps. Utilize st.title to add a title to the web page, followed by st.markdown to incorporate markdown content.
 
-To get this application started locally you'll need to install the streamlit dependency as follows (not needed in Codespaces):
+For launching this application locally, first install Streamlit and other dependencies required for later steps. Proceed to install all necessary dependencies immediately:
 ```bash
-pip install streamlit
+pip install -r requirements.txt
 ```
 
 Now run the app:
@@ -206,11 +200,6 @@ response = chain.invoke({'question': question})
 answer = response.content
 ```
 Check out the complete code in [app_4.py](./app_4.py).
-
-To get this application started locally you'll need to install several dependencies as follows:
-```bash
-pip install -r requirements.txt
-```
 
 Now run the app:
 ```bash
