@@ -1,6 +1,6 @@
 import streamlit as st
-from langchain_openai import OpenAIEmbeddings
-from langchain_openai import ChatOpenAI
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.chat_models.ollama import ChatOllama
 from langchain_community.vectorstores import AstraDB
 from langchain.schema.runnable import RunnableMap
 from langchain.prompts import ChatPromptTemplate
@@ -18,15 +18,13 @@ YOUR ANSWER:"""
     return ChatPromptTemplate.from_messages([("system", template)])
 prompt = load_prompt()
 
-# Cache OpenAI Chat Model for future runs
+# Cache Chat Model for future runs
 @st.cache_resource()
 def load_chat_model():
-    return ChatOpenAI(
-        temperature=0.3,
-        model='gpt-3.5-turbo',
-        streaming=True,
-        verbose=True
-    )
+    # parameters for ollama see: https://api.python.langchain.com/en/latest/chat_models/langchain_community.chat_models.ollama.ChatOllama.html
+    # num_ctx is the context window size
+    return ChatOllama(model="mistral:latest", num_ctx=18192)
+
 chat_model = load_chat_model()
 
 # Start with empty messages, stored in session state
@@ -52,7 +50,7 @@ if question := st.chat_input("What's up?"):
     with st.chat_message('human'):
         st.markdown(question)
 
-    # Generate the answer by calling OpenAI's Chat Model
+    # Generate the answer by calling Chat Model
     inputs = RunnableMap({
         'question': lambda x: x['question']
     })
