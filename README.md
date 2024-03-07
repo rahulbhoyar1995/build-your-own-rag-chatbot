@@ -19,10 +19,12 @@ What you'll learn:
 This workshop assumes you have:
 1. [A Github account](https://github.com)
 2. [Ollama installed on your local machine](https://ollama.com/download)
+   ![codespace](./assets/ollama-download.png)
 3. [Run Mistral LLM powered by Ollama on your local machine](https://ollama.com/library/mistral/tags)
    ```bash
    ollama run mistral
    ```
+   Trt also other versions of mistral. For example [quantized models](https://huggingface.co/docs/optimum/concept_guides/quantization) reduce the computational and memory costs of running inference and might speed up the response in case you run on low computing resources.
    ![codespace](./assets/ollama.png)
 4. Ensure Python 3.11 or higher is installed on your local machine. 
    We advise executing all Python commands within a virtual environment for enhanced management and isolation.
@@ -32,9 +34,6 @@ This workshop assumes you have:
    python -m venv workshop
    ```
    Activate the 'workshop' virtual environment as follows: 
-   ```bash 
-   workshop\Scripts\activate
-   ```
    Windows: 
    ```bash 
    .\workshop\Scripts\activate
@@ -377,26 +376,3 @@ streamlit run app_7.py
 Now upload a PDF document (the more the merrier) that is relevant to you and start asking questions about it. You'll see that the answers will be relevant, meaningful and contextual! 🥳 See the magic happen!
 
 ![end-result](./assets/end-result.png)
-
-# Python environments
-In case you want to run all of the above locally, it's useful to create a *Virtual Environment*. Use the below to set it up:
-```
-python3 -m venv myenv
-```
-Then activate it as follows:
-```
-source myenv/bin/activate   # on Linux/Mac
-myenv\Scripts\activate.bat  # on Windows
-```
-Now you can start installing packages:
-```
-pip3 install -r requirements.txt
-```
-In order to check which packages have been installed:
-```
-pip3 freeze
-```
-Which you can save to requirements.txt if you want:
-```
-pip3 freeze > requirements.txt
-```
