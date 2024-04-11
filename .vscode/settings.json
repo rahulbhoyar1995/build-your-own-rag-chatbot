@@ -1,5 +1,7 @@
 {
     "workbench.editorAssociations": {
         "*.md": "vscode.markdown.preview.editor"
-    }
+    },
+    "editor.fontSize": 18, // Adjust the number as per your preference
+    "terminal.integrated.fontSize": 18 // Adjust the number as per your preference
 }
